@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import Hero from './_components/Hero';
 
 export function ButtonDemo() {
   return <Button>Button</Button>;
@@ -7,8 +8,7 @@ export function ButtonDemo() {
 export default function Home() {
   return (
     <main>
-      <h1 className="text-primary">Hello Next js</h1>
-      <Button>Hi</Button>
+      <Hero />
     </main>
   );
 }
