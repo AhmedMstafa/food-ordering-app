@@ -2,7 +2,7 @@
 import { formatCurrency } from '@/lib/formatters';
 import Image from 'next/image';
 import AddToCartButton from './AddToCartButton';
-import { ProductWithRelations } from '@/lib/types/product';
+import { ProductWithRelations } from '../../types/product';
 function MenuItem({ item }: { item: ProductWithRelations }) {
   return (
     <li key={item.id}>

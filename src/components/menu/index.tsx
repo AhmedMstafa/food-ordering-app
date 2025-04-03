@@ -1,4 +1,4 @@
-import { ProductWithRelations } from '@/lib/types/product';
+import { ProductWithRelations } from '../../types/product';
 import MenuItem from './MenuItem';
 const Menu = ({ items }: { items: ProductWithRelations[] }) => {
   return (

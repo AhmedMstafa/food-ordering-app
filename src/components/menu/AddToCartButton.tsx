@@ -16,7 +16,7 @@ import { Label } from '../ui/label';
 import Image from 'next/image';
 import { formatCurrency } from '@/lib/formatters';
 import { Extra, Product, Size } from '@prisma/client';
-import { ProductWithRelations } from '@/lib/types/product';
+import { ProductWithRelations } from '../../types/product';
 
 function AddToCartButton({ item }: { item: ProductWithRelations }) {
   return (
