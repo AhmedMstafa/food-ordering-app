@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import {
@@ -16,20 +15,10 @@ import { Button } from '../ui/button';
 import { Label } from '../ui/label';
 import Image from 'next/image';
 import { formatCurrency } from '@/lib/formatters';
+import { Extra, Product, Size } from '@prisma/client';
+import { ProductWithRelations } from '@/lib/types/product';
 
-const sizes = [
-  { id: crypto.randomUUID(), name: 'Small', price: 0 },
-  { id: crypto.randomUUID(), name: 'Medium', price: 4 },
-  { id: crypto.randomUUID(), name: 'Large', price: 8 },
-];
-
-const extras = [
-  { id: crypto.randomUUID(), name: 'Chasse', price: 0 },
-  { id: crypto.randomUUID(), name: 'Onion', price: 4 },
-  { id: crypto.randomUUID(), name: 'Tomato', price: 8 },
-];
-
-function AddToCartButton({ item }: { item: any }) {
+function AddToCartButton({ item }: { item: ProductWithRelations }) {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -54,13 +43,13 @@ function AddToCartButton({ item }: { item: any }) {
             <Label htmlFor="pick-size " className="block">
               Pick your size
             </Label>
-            <PickSize sizes={sizes} item={item} />
+            <PickSize sizes={item.sizes} item={item} />
           </div>
           <div className="space-y-4 text-center">
             <Label htmlFor="add-extras" className="block">
               Any extras?
             </Label>
-            <Extras extras={extras} />
+            <Extras extras={item.extras} />
           </div>
         </div>
         <DialogFooter>
@@ -75,10 +64,10 @@ function AddToCartButton({ item }: { item: any }) {
 
 export default AddToCartButton;
 
-function PickSize({ sizes, item }: { sizes: any; item: any }) {
+function PickSize({ sizes, item }: { sizes: Size[]; item: Product }) {
   return (
     <RadioGroup defaultValue="comfortable">
-      {sizes.map((size: any) => (
+      {sizes.map((size) => (
         <div
           key={size.id}
           className="flex items-center space-x-2 border border-gray-100 rounded-md p-4"
@@ -93,8 +82,8 @@ function PickSize({ sizes, item }: { sizes: any; item: any }) {
   );
 }
 
-function Extras({ extras }: { extras: any }) {
-  return extras.map((extra: any) => (
+function Extras({ extras }: { extras: Extra[] }) {
+  return extras.map((extra) => (
     <div
       key={extra.id}
       className="flex items-center space-x-2 border border-gray-100 rounded-md p-4"
@@ -104,7 +93,7 @@ function Extras({ extras }: { extras: any }) {
         htmlFor={extra.id}
         className="text-sm text=accent font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
       >
-        {extra.name}
+        {extra.name} {formatCurrency(extra.price)}
       </label>
     </div>
   ));
