@@ -3,9 +3,10 @@ import BestSellers from './_components/BestSellers';
 import { db } from '@/lib/prisma';
 
 export default async function Home() {
+  // await db.product.deleteMany();
+  // await db.category.deleteMany();
   await db.size.deleteMany();
   await db.extra.deleteMany();
-  await db.product.deleteMany();
   return (
     <main>
       <Hero />

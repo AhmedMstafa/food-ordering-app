@@ -3,7 +3,6 @@ import Menu from '@/components/menu';
 import { getBestSellers } from '@/server/db/products';
 const BestSellers = async () => {
   const bestSellers = await getBestSellers(3);
-
   return (
     <section>
       <div className="container">
