@@ -1,5 +1,5 @@
 import { ProductWithRelations } from '../../types/product';
-import MenuItem from './MenuItem';
+import MenuItem from './menu-item';
 const Menu = ({ items }: { items: ProductWithRelations[] }) => {
   return items.length > 0 ? (
     <ul className="grid grid-cols-1 sm:grid-cols-3 gap-4">

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { formatCurrency } from '@/lib/formatters';
 import Image from 'next/image';
-import AddToCartButton from './AddToCartButton';
+import AddToCartButton from './add-to-cart-button';
 import { ProductWithRelations } from '../../types/product';
 function MenuItem({ item }: { item: ProductWithRelations }) {
   return (
