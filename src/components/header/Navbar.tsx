@@ -1,25 +1,37 @@
 'use client';
-import Link from '../link';
-import { Pages, Routes } from '@/constants/enums';
-import { buttonVariants } from '../ui/button';
-import { useState } from 'react';
-import { Button } from '../ui/button';
-import { Menu, XIcon } from 'lucide-react';
 
-function Navbar() {
+import { Routes } from '@/constants/enums';
+import Link from '../link';
+import { Button } from '../ui/button';
+import { useState } from 'react';
+import { Menu, XIcon } from 'lucide-react';
+import { useParams, usePathname } from 'next/navigation';
+import LanguageSwitcher from './language-switcher';
+
+function Navbar({ translations }: { translations: { [key: string]: string } }) {
   const [openMenu, setOpenMenu] = useState(false);
+  const { locale } = useParams();
+  const pathname = usePathname();
+
   const links = [
-    { id: crypto.randomUUID(), title: 'Menu', href: Routes.MENU },
-    { id: crypto.randomUUID(), title: 'About', href: Routes.ABOUT },
-    { id: crypto.randomUUID(), title: 'Contact', href: Routes.CONTACT },
     {
       id: crypto.randomUUID(),
-      title: 'Login',
-      href: `${Routes.AUTH}/${Pages.LOGIN}`,
+      title: translations.menu,
+      href: Routes.MENU,
+    },
+    {
+      id: crypto.randomUUID(),
+      title: translations.about,
+      href: Routes.ABOUT,
+    },
+    {
+      id: crypto.randomUUID(),
+      title: translations.contact,
+      href: Routes.CONTACT,
     },
   ];
   return (
-    <nav className="flex-1 justify-end flex">
+    <nav className="order-last lg:order-none">
       <Button
         variant="secondary"
         size="sm"
@@ -36,7 +48,7 @@ function Navbar() {
         <Button
           variant="secondary"
           size="sm"
-          className="absolute top-10 right-20 lg:hidden"
+          className="absolute top-10 right-10 lg:hidden"
           onClick={() => setOpenMenu(false)}
         >
           <XIcon className="!w-6 !h-6" />
@@ -44,18 +56,22 @@ function Navbar() {
         {links.map((link) => (
           <li key={link.id}>
             <Link
-              href={`/${link.href}`}
-              className={`${
-                link.href === `${Routes.AUTH}/${Pages.LOGIN}`
-                  ? `${buttonVariants({ size: 'lg' })} !px-8 !rounded-full`
-                  : 'text-accent hover:text-primary duration-200 transition-colors '
-              }
-              font-semibold`}
+              onClick={() => setOpenMenu(false)}
+              href={`/${locale}/${link.href}`}
+              className={`hover:text-primary duration-200 transition-colors font-semibold ${
+                pathname.startsWith(`/${locale}/${link.href}`)
+                  ? 'text-primary'
+                  : 'text-accent'
+              }`}
             >
               {link.title}
             </Link>
           </li>
         ))}
+
+        <li className="lg:hidden flex flex-col gap-4">
+          <LanguageSwitcher />
+        </li>
       </ul>
     </nav>
   );
