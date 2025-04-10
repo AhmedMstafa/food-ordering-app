@@ -1,16 +1,16 @@
-import Menu from '@/components/menu';
-import { Locale } from '@/i18n.config';
-import getTrans from '@/lib/translation';
-import { getProductsByCategory } from '@/server/db/products';
+import Menu from "@/components/menu";
+import { Locale } from "@/i18n.config";
+import getTrans from "@/lib/translation";
+import { getProductsByCategory } from "@/server/db/products";
 
 async function MenuPage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
   const translations = await getTrans(locale);
-  const categories = await getProductsByCategory();
+  const categorites = await getProductsByCategory();
   return (
     <main>
-      {categories.length > 0 ? (
-        categories.map((category) => (
+      {categorites.length > 0 ? (
+        categorites.map((category) => (
           <section key={category.id} className="section-gap">
             <div className="container text-center">
               <h1 className="text-primary font-bold text-4xl italic mb-6">

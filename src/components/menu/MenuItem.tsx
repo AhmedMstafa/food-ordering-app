@@ -1,11 +1,14 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { formatCurrency } from '@/lib/formatters';
-import Image from 'next/image';
-import AddToCartButton from './add-to-cart-button';
-import { ProductWithRelations } from '../../types/product';
+import { formatCurrency } from "@/lib/formatters";
+import Image from "next/image";
+import AddToCartButton from "./add-to-cart-button";
+import { ProductWithRelations } from "@/types/product";
+
 function MenuItem({ item }: { item: ProductWithRelations }) {
   return (
-    <li key={item.id}>
+    <li
+      className="p-6 rounded-lg text-center
+    group hover:bg-white hover:shadow-md hover:shadow-black/25 transition-all"
+    >
       <div className="relative w-48 h-48 mx-auto">
         <Image src={item.image} className="object-cover" alt={item.name} fill />
       </div>

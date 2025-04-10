@@ -12,6 +12,7 @@ export const getItemQuantity = (id: string, cart: CartItem[]) => {
 
 export const getSubTotal = (cart: CartItem[]) => {
   return cart.reduce((total, cartItem) => {
+    // item.basePrice + item.size.price + extra prices
     const extrasTotal = cartItem.extras?.reduce(
       (sum, extra) => sum + (extra.price || 0),
       0

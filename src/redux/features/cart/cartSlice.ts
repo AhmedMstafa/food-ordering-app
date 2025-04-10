@@ -15,7 +15,6 @@ export type CartItem = {
 type CartState = {
   items: CartItem[];
 };
-
 const initialCartItems = localStorage.getItem('cartItems');
 
 const initialState: CartState = {
@@ -51,7 +50,9 @@ export const cartSlice = createSlice({
       }
     },
     removeItemFromCart: (state, action: PayloadAction<{ id: string }>) => {
-      state.items = state.items.filter((item) => item.id !== action.payload.id);
+      state.items = state.items = state.items.filter(
+        (item) => item.id !== action.payload.id
+      );
     },
     clearCart: (state) => {
       state.items = [];
@@ -59,7 +60,7 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { addCartItem, removeCartItem, removeItemFromCart, clearCart } =
+export const { addCartItem, removeCartItem, removeItemFromCart } =
   cartSlice.actions;
 
 export default cartSlice.reducer;

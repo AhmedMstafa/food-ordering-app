@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useParams, usePathname, useRouter } from 'next/navigation';
-import { Button } from '../ui/button';
-import { Languages } from '@/constants/enums';
+import { useParams, usePathname, useRouter } from "next/navigation";
+import { Button } from "../ui/button";
+import { Languages } from "@/constants/enums";
 
 const LanguageSwitcher = () => {
   const router = useRouter();

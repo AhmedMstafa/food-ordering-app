@@ -12,12 +12,12 @@ async function Hero() {
   const { home } = await getTrans(locale);
   const { hero } = home;
   return (
-    <section className="section-gap">
-      <div className="container grid grid-cols-1 md:grid-cols-2">
-        <div className="md:py-12">
-          <h1 className="text-4xl font-semibold">{hero.title}</h1>
-          <p className="text-accent my-4">{hero.description}</p>
-          <div className="flex items-center gap-4">
+    <section className='section-gap'>
+      <div className='container grid grid-cols-1 md:grid-cols-2'>
+        <div className='md:py-12'>
+          <h1 className='text-4xl font-semibold'>{hero.title}</h1>
+          <p className='text-accent my-4'>{hero.description}</p>
+          <div className='flex items-center gap-4'>
             <Link
               href={`/${Routes.MENU}`}
               className={`${buttonVariants({
@@ -33,7 +33,7 @@ async function Hero() {
             </Link>
             <Link
               href={`/${Routes.ABOUT}`}
-              className="flex gap-2 items-center text-black hover:text-primary duration-200 transition-colors font-semibold"
+              className='flex gap-2 items-center text-black hover:text-primary duration-200 transition-colors font-semibold'
             >
               {hero.learnMore}
               <ArrowRightCircle
@@ -44,13 +44,13 @@ async function Hero() {
             </Link>
           </div>
         </div>
-        <div className="relative hidden md:block">
+        <div className='relative hidden md:block'>
           <Image
-            src="/assets/images/pizza.png"
-            alt="Pizza"
+            src='/assets/images/pizza.png'
+            alt='Pizza'
             fill
-            className="object-contain"
-            loading="eager"
+            className='object-contain'
+            loading='eager'
             priority
           />
         </div>

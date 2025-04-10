@@ -11,8 +11,8 @@ async function BestSellers() {
   const { bestSeller } = home;
   return (
     <section>
-      <div className="container">
-        <div className="text-center mb-4">
+      <div className='container'>
+        <div className='text-center mb-4'>
           <MainHeading
             subTitle={bestSeller.checkOut}
             title={bestSeller.OurBestSellers}

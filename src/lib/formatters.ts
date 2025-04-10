@@ -3,6 +3,5 @@ export const formatCurrency = (number: number) => {
     currency: 'USD',
     style: 'currency',
   });
-
   return CURRENCY_FORMATTER.format(number);
 };
